@@ -1,4 +1,6 @@
 import '@styles/global.css'
+import Nav from "@components/Nav";
+import Provider from "@components/Provider";
 
 export const metadata = {
     title: "Expressay",
@@ -14,6 +16,7 @@ const RootLayout = ({ children }) => {
                 </div>
 
                 <main class="app">
+                    <Nav />
                     {children}
                 </main>
             </body>
