@@ -99,7 +99,7 @@
 }
 
 .search_input {
-    @apply block w-full rounded-md border border-gray-200 bg-white py-2.5 font-satoshi pl-5 pr-12 text-sm shadow-lg font-medium focus:border-black focus:outline-none focus:ring-0;
+    @apply block w-full rounded-md border border-gray-200 bg-white py-2.5 font-inter pl-5 pr-12 text-sm shadow-lg font-medium focus:border-black focus:outline-none focus:ring-0;
 }
 
 .copy_btn {
@@ -143,7 +143,7 @@
 }
 
 .logo_text {
-    @apply max-sm:hidden font-satoshi font-semibold text-lg text-black tracking-wide;
+    @apply max-sm:hidden font-inter font-semibold text-lg text-black tracking-wide;
 }
 
 .dropdown {
@@ -155,5 +155,5 @@
 }
 
 .prompt_card {
-    @apply break-inside-avoid flex-1 rounded-lg border border-gray-300 bg-white/18 bg-clip-padding p-5 pb-3 backdrop-blur-lg backdrop-filter md:w-[348px] w-full h-fit;
+    @apply break-inside-avoid flex-1 rounded-lg border border-gray-300 bg-white/20 bg-clip-padding p-5 pb-3 backdrop-blur-lg backdrop-filter md:w-[348px] w-full h-fit;
 }
