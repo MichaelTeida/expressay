@@ -1,11 +1,24 @@
 import '@styles/global.css'
 
-const layout = () => {
+export const metadata = {
+    title: "Expressay",
+    description: "Express yourself to the audience"
+}
+
+const RootLayout = () => {
     return (
-        <div>
-            
-        </div>
+        <html lang="en">
+            <body>
+                <div className="main">
+                    <div class="gradient"/>
+                </div>
+
+                <main class="app">
+                    {children}
+                </main>
+            </body>
+        </html>
     );
 };
 
-export default layout;
+export default RootLayout;
