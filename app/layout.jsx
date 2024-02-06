@@ -5,7 +5,7 @@ export const metadata = {
     description: "Express yourself to the audience"
 }
 
-const RootLayout = () => {
+const RootLayout = ({ children }) => {
     return (
         <html lang="en">
             <body>
