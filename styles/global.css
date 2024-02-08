@@ -67,7 +67,7 @@
 }
 
 .app {
-    @apply flex justify-center items-center flex-col max-w-7xl relative sm:px-16 px-6 z-10;
+    @apply flex justify-center items-center flex-col max-w-7xl relative sm:px-16 px-6 z-10 mx-auto;
 }
 
 .green_btn {

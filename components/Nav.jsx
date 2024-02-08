@@ -3,10 +3,10 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import {useEffect, useState} from "react";
-import {signIn, signOut, getProviders} from "next-auth/react";
+import {signIn, signOut, useSession, getProviders} from "next-auth/react";
 
 const Nav = () => {
-    const isUserLogged = true
+    const {data: session} = useSession()
 
     const [providers, setProviders] = useState(null)
     const [toggleDropdown, setToggleDropdown] = useState(false)
@@ -29,7 +29,7 @@ const Nav = () => {
             </Link>
 
             <div className='sm:flex hidden'>
-                {isUserLogged ? (
+                {session?.user ? (
                     <div className='flex gap-3 md:gap-5'>
                         <Link href='/create-entry' className='green_btn'>
                             Create entry
@@ -57,7 +57,7 @@ const Nav = () => {
             {/* mobile nav */}
 
             <div className='sm:hidden flex relative'>
-                {isUserLogged ? (
+                {session?.user ? (
                     <div className='flex'>
                         <Image src='/assets/icons/user.svg' alt='profile avatar' width={37} height={37}
                                className='rounded-full' onClick={() => setToggleDropdown(prevState => !prevState)}/>
