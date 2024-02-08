@@ -2,9 +2,24 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import {useEffect, useState} from "react";
+import {signIn, signOut, getProviders} from "next-auth/react";
 
 const Nav = () => {
     const isUserLogged = true
+
+    const [providers, setProviders] = useState(null)
+    const [toggleDropdown, setToggleDropdown] = useState(false)
+
+    useEffect(() => {
+        const setProviders = async () => {
+            const response = await getProviders()
+
+            setProviders(response)
+        }
+
+        setProviders()
+    }, [])
 
     return (
         <nav className='flex-between w-full mb-16 pt-3'>
@@ -19,19 +34,64 @@ const Nav = () => {
                         <Link href='/create-entry' className='green_btn'>
                             Create entry
                         </Link>
-                        <button type='button' onClick={'signOut'} className='outline_btn'>
+                        <button type='button' onClick={signOut} className='outline_btn'>
                             Sign out
                         </button>
                         <Link href='/profile'>
-                            <Image src='/assets/icons/user.svg' alt='profile avatar' width={37} height={37} className='rounded-full'/>
+                            <Image src='/assets/icons/user.svg' alt='profile avatar' width={37} height={37}
+                                   className='rounded-full'/>
                         </Link>
                     </div>
                 ) : (
                     <>
-
+                        {providers && Object.values(providers).map((provider) => (
+                            <button type='button' key={provider.name} onClick={() => signIn(provider.id)}
+                                    className='green_btn'>
+                                Sign in
+                            </button>
+                        ))}
                     </>
                 )}
             </div>
+
+            {/* mobile nav */}
+
+            <div className='sm:hidden flex relative'>
+                {isUserLogged ? (
+                    <div className='flex'>
+                        <Image src='/assets/icons/user.svg' alt='profile avatar' width={37} height={37}
+                               className='rounded-full' onClick={() => setToggleDropdown(prevState => !prevState)}/>
+                        {toggleDropdown && (
+                            <div className='dropdown'>
+                                <Link href='/profile' className='dropdown_link'
+                                      onClick={() => setToggleDropdown(false)}>
+                                    Profile
+                                </Link>
+                                <Link href='/create-entry' className='dropdown_link'
+                                      onClick={() => setToggleDropdown(false)}>
+                                    Create entry
+                                </Link>
+                                <button type='button' className='mt-4 w-full green_btn' onClick={() => {
+                                    setToggleDropdown(false)
+                                    signOut()
+                                }}>
+                                    Sign out
+                                </button>
+                            </div>
+                        )}
+                    </div>
+                ) : (
+                    <>
+                        {providers && Object.values(providers).map((provider) => (
+                            <button type='button' key={provider.name} onClick={() => signIn(provider.id)}
+                                    className='green_btn'>
+                                Sign in
+                            </button>
+                        ))}
+                    </>
+                )}
+            </div>
+
         </nav>
     );
 };
