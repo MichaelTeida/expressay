@@ -29,7 +29,7 @@
     position: absolute;
     opacity: 0.38;
     content: "";
-    background-image: url("/assets/images/grid.svg");
+    background-image: url("/public/assets/images/grid.svg");
     filter: invert(1);
     top: 0;
     z-index: 1;
