@@ -7,19 +7,22 @@ export const metadata = {
     description: "Express yourself to the audience"
 }
 
-const RootLayout = ({ children }) => {
+const RootLayout = ({children}) => {
     return (
         <html lang="en">
-            <body>
-                <div className="main">
-                    <div class="gradient"/>
-                </div>
+        <body>
+        <Provider>
+            <div className="main">
+                <div className="gradient"/>
+            </div>
 
-                <main class="app">
-                    <Nav />
-                    {children}
-                </main>
-            </body>
+            <main className="app">
+                <Nav/>
+                {children}
+            </main>
+            >
+        </Provider>
+        </body>
         </html>
     );
 };
