@@ -35,7 +35,7 @@ const Nav = () => {
                             Sign out
                         </button>
                         <Link href='/profile'>
-                            <Image src='/assets/icons/user.svg' alt='profile avatar' width={37} height={37}
+                            <Image src={session?.user.image} alt='profile avatar' width={37} height={37}
                                    className='rounded-full'/>
                         </Link>
                     </div>
