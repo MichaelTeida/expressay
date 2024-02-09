@@ -7,6 +7,9 @@ import { useRouter } from 'next/navigation'
 import Form from '@components/Form'
 
 const CreateEntry = () => {
+    const router = useRouter()
+    const {data: session} = useSession()
+
     const [submitting, setSubmitting] = useState(false)
     const [post, setPost] = useState({
         entry: '',
@@ -14,7 +17,27 @@ const CreateEntry = () => {
     })
 
     const createEntry = async (e) => {
+        e.preventDefault()
+        setSubmitting(true)
 
+        try {
+            const response = await fetch('/api/entry/new', {
+                method: 'POST',
+                body: JSON.stringify({
+                    entry: post.entry,
+                    userId: session?.user.id,
+                    tag: post.tag,
+                })
+            })
+
+            if(response.ok) {
+                router.push('/')
+            }
+        } catch (error) {
+
+        } finally {
+            setSubmitting(false)
+        }
     }
 
     return (
