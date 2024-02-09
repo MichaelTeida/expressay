@@ -19,11 +19,11 @@ const CreateEntry = () => {
 
     return (
         <Form
-        type='create'
+        type='Create'
         post={post}
         setPost={setPost}
         submitting={submitting}
-        hadleSubmit={createEntry}
+        handleSubmit={createEntry}
         />
     );
 };
