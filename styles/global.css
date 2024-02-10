@@ -161,6 +161,6 @@
     @apply text-sm font-inter text-gray-700 hover:text-gray-500 font-medium w-full text-center;
 }
 
-.prompt_card {
+.entry_card {
     @apply break-inside-avoid flex-1 rounded-lg border border-gray-300 bg-white/20 bg-clip-padding p-5 pb-3 backdrop-blur-lg backdrop-filter md:w-[348px] w-full h-fit;
 }
