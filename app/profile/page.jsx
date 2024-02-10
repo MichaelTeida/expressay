@@ -31,7 +31,8 @@ const MyProfile = () => {
 
   return (
     <Profile
-      name={session?.user.username}
+      name={session?.user.name}
+      email={session?.user.email}
       desc="Welcome to Your profile"
       data={posts}
       handleEdit={handleEdit}
