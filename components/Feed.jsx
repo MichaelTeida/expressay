@@ -22,16 +22,17 @@ const Feed = () => {
     setSearchText(event.target.value);
   };
 
+  const fetchPosts = async () => {
+    try {
+      const response = await fetch("/api/entry");
+      const data = await response.json();
+      setPosts(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const response = await fetch("/api/entry");
-        const data = await response.json();
-        setPosts(data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
     fetchPosts();
   }, []);
 
