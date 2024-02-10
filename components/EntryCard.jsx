@@ -2,8 +2,12 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { useSession } from "next-auth/react";
+import { usePathname } from "next/navigation";
 
 const EntryCard = ({ post, handleTagClick }) => {
+  const { session } = useSession();
+  const pathName = usePathname;
   const [copied, setCopied] = useState("");
 
   const handleCopy = () => {
@@ -50,6 +54,23 @@ const EntryCard = ({ post, handleTagClick }) => {
       >
         {post.tag}
       </p>
+
+      {session?.user.id === post.creator.id && pathName === "/profile" && (
+        <div>
+          <p
+            className="text-sm backdrop-blur cursor-pointer"
+            onClick={handleEdit}
+          >
+            Edit
+          </p>
+          <p
+            className="text-sm backdrop-blur cursor-pointer"
+            onClick={handleDelete}
+          >
+            Delete
+          </p>
+        </div>
+      )}
     </div>
   );
 };
