@@ -1,9 +1,17 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Image from "next/image";
 
 const EntryCard = ({ post, handleTagClick }) => {
+  const [copied, setCopied] = useState("");
+
+  const handleCopy = () => {
+    setCopied(post.entry);
+    navigator.clipboard.writeText(post.entry);
+    setTimeout(() => setCopied(""), 2000);
+  };
+
   return (
     <div className="entry_card">
       <div className="flex justify-between items-start gap-5">
@@ -22,7 +30,26 @@ const EntryCard = ({ post, handleTagClick }) => {
             </address>
           </div>
         </div>
+        <div className="copy_btn" onClick={handleCopy}>
+          <Image
+            src={
+              copied === post.entry
+                ? "/assets/icons/tick.svg"
+                : "/assets/icons/copy.svg"
+            }
+            width={15}
+            height={15}
+            alt="copy entry"
+          />
+        </div>
       </div>
+      <p className="my-4 text-gray-800">{post.entry}</p>
+      <p
+        className="text-sm green_gradient cursor-pointer"
+        onClick={() => handleTagClick && handleTagClick(post.tag)}
+      >
+        {post.tag}
+      </p>
     </div>
   );
 };
