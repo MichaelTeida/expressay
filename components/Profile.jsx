@@ -1,5 +1,5 @@
 const Profile = () => {
-  return <div>Halo</div>;
+  return <section className="">HALO</section>;
 };
 
 export default Profile;
