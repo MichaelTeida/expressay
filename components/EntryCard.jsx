@@ -1,7 +1,7 @@
 import React from "react";
 
 const EntryCard = () => {
-  return <div></div>;
+  return <div>Test</div>;
 };
 
 export default EntryCard;
