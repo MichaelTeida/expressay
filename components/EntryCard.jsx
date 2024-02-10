@@ -3,11 +3,12 @@
 import { useState } from "react";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
-const EntryCard = ({ post, handleTagClick }) => {
-  const { session } = useSession();
-  const pathName = usePathname;
+const EntryCard = ({ post, handleEdit, handleDelete, handleTagClick }) => {
+  const { data: session } = useSession();
+  const pathName = usePathname();
+  const router = useRouter();
   const [copied, setCopied] = useState("");
 
   const handleCopy = () => {
@@ -48,29 +49,30 @@ const EntryCard = ({ post, handleTagClick }) => {
         </div>
       </div>
       <p className="my-4 text-gray-800">{post.entry}</p>
-      <p
-        className="text-sm green_gradient cursor-pointer"
-        onClick={() => handleTagClick && handleTagClick(post.tag)}
-      >
-        {post.tag}
-      </p>
-
-      {session?.user.id === post.creator.id && pathName === "/profile" && (
-        <div>
-          <p
-            className="text-sm backdrop-blur cursor-pointer"
-            onClick={handleEdit}
-          >
-            Edit
-          </p>
-          <p
-            className="text-sm backdrop-blur cursor-pointer"
-            onClick={handleDelete}
-          >
-            Delete
-          </p>
-        </div>
-      )}
+      <div className="flex flex-row justify-between items-center">
+        <p
+          className="text-sm green_gradient cursor-pointer"
+          onClick={() => handleTagClick && handleTagClick(post.tag)}
+        >
+          {post.tag}
+        </p>
+        {session?.user.id === post.creator._id && pathName === "/profile" && (
+          <div className="flex flex-row gap-4">
+            <p
+              className="text-sm cursor-pointer green_btn"
+              onClick={handleEdit}
+            >
+              Edit
+            </p>
+            <p
+              className="text-sm backdrop-blur color-red cursor-pointer red_btn"
+              onClick={handleDelete}
+            >
+              Delete
+            </p>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
