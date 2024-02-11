@@ -26,7 +26,7 @@ const MyProfile = () => {
     if (session?.user.id) {
       fetchPosts();
     }
-  }, []);
+  }, [session?.user.id]);
 
   const handleEdit = (post) => {
     router.push("/edit-entry?id=" + post._id);
