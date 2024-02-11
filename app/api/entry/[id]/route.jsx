@@ -17,7 +17,7 @@ export const GET = async (req, { params }) => {
 };
 
 // PATCH (update)
-export const POST = async (req, { params }) => {
+export const PATCH = async (req, { params }) => {
   const { entry, tag } = await req.json();
 
   try {

@@ -29,7 +29,7 @@ const MyProfile = () => {
   }, []);
 
   const handleEdit = (post) => {
-    router.push("/update-entry?id=" + post.id);
+    router.push("/edit-entry?id=" + post._id);
   };
   const handleDelete = async (post) => {};
 
