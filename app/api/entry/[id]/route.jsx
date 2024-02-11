@@ -44,7 +44,7 @@ export const DELETE = async (req, { params }) => {
   try {
     await connectToDB();
 
-    await Entry.findByIdAndRemove(params.id);
+    await Entry.findByIdAndDelete(params.id);
 
     return new Response("Entry deleted", { status: 200 });
   } catch (error) {
