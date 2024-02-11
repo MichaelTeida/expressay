@@ -31,7 +31,24 @@ const MyProfile = () => {
   const handleEdit = (post) => {
     router.push("/edit-entry?id=" + post._id);
   };
-  const handleDelete = async (post) => {};
+  const handleDelete = async (post) => {
+    const confirmed = confirm("Are you sure you want to delete this post?");
+
+    if (confirmed) {
+      try {
+        await fetch(`/api/entry/${post._id.toString()}`, {
+          method: "DELETE",
+        });
+        const filteredPosts = posts.filter(
+          (filteredPost) => filteredPost._id !== post._id,
+        );
+        console.log(filteredPosts);
+        setPosts(filteredPosts);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  };
 
   return (
     <Profile

@@ -54,7 +54,7 @@ const EntryCard = ({ post, handleEdit, handleDelete, handleTagClick }) => {
           className="text-sm green_gradient cursor-pointer"
           onClick={() => handleTagClick && handleTagClick(post.tag)}
         >
-          {post.tag}
+          #{post.tag}
         </p>
         {session?.user.id === post.creator._id && pathName === "/profile" && (
           <div className="flex flex-row gap-4">
