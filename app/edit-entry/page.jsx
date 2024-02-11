@@ -31,22 +31,24 @@ const EditEntry = () => {
     }
   }, [entryId]);
 
-  const createEntry = async (e) => {
+  const editEntry = async (e) => {
     e.preventDefault();
     setSubmitting(true);
 
+    if (!entryId) {
+      return console.error("No entry found");
+    }
     try {
-      const response = await fetch("/api/entry/new", {
-        method: "POST",
+      const response = await fetch(`/api/entry/${entryId}`, {
+        method: "PATCH",
         body: JSON.stringify({
           entry: post.entry,
-          userId: session?.user.id,
           tag: post.tag,
         }),
       });
 
       if (response.ok) {
-        router.push("/");
+        router.push("/profile");
       }
     } catch (error) {
     } finally {
@@ -60,7 +62,7 @@ const EditEntry = () => {
       post={post}
       setPost={setPost}
       submitting={submitting}
-      handleSubmit={() => {}}
+      handleSubmit={editEntry}
     />
   );
 };
