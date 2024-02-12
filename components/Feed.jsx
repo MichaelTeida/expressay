@@ -29,7 +29,9 @@ const Feed = () => {
     const regex = new RegExp(searchedText, "i");
     return posts.filter((el) => {
       return (
-        regex.test(el.username) || regex.test(el.tag) || regex.test(el.entry)
+        regex.test(el.creator.username) ||
+        regex.test(el.tag) ||
+        regex.test(el.entry)
       );
     });
   };
