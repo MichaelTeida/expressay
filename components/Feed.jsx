@@ -17,7 +17,6 @@ const Feed = () => {
   const [posts, setPosts] = useState([]);
 
   const [searchText, setSearchText] = useState("");
-  const [searchTimeout, setSearchTimeout] = useState(null);
   const [resultPosts, setResultPosts] = useState([]);
 
   const HandleSearch = (event) => {
