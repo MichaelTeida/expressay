@@ -14,32 +14,32 @@ const EntryCardList = ({ data, handleTagClick }) => {
 };
 
 const Feed = () => {
+  const [posts, setPosts] = useState([]);
+
   const [searchText, setSearchText] = useState("");
   const [searchTimeout, setSearchTimeout] = useState(null);
   const [resultPosts, setResultPosts] = useState([]);
-  const [posts, setPosts] = useState([]);
 
   const HandleSearch = (event) => {
     event.preventDefault();
     setSearchText(event.target.value);
-    HandleSearchTimeout();
+    HandleSearchTimeout(event.target.value);
   };
 
-  const FilterPosts = () => {
-    const regex = new RegExp(searchText, "i");
+  const FilterPosts = (searchedText) => {
+    const regex = new RegExp(searchedText, "i");
     return posts.filter((el) => {
-      regex.test(el.username) || regex.test(el.tag) || regex.test(el.entry);
+      return (
+        regex.test(el.username) || regex.test(el.tag) || regex.test(el.entry)
+      );
     });
   };
 
-  const HandleSearchTimeout = () => {
-    clearTimeout(searchTimeout);
-
-    setSearchTimeout(
-      setTimeout(() => {
-        setResultPosts(FilterPosts);
-      }, 350),
-    );
+  const HandleSearchTimeout = (searchedText) => {
+    setTimeout(() => {
+      const filteredPosts = FilterPosts(searchedText);
+      setResultPosts(filteredPosts);
+    }, 350);
   };
 
   const fetchPosts = async () => {
