@@ -28,16 +28,18 @@ const Feed = () => {
   const FilterPosts = () => {
     const regex = new RegExp(searchText, "i");
     return posts.filter((el) => {
-      regex.test(el.username), regex.test(el.tag), regex.test(el.entry);
+      regex.test(el.username) || regex.test(el.tag) || regex.test(el.entry);
     });
   };
 
   const HandleSearchTimeout = () => {
-    clearTimeout(timeout);
+    clearTimeout(searchTimeout);
 
-    const timeout = setTimeout(() => {
-      setResultPosts(FilterPosts);
-    }, 350);
+    setSearchTimeout(
+      setTimeout(() => {
+        setResultPosts(FilterPosts);
+      }, 350),
+    );
   };
 
   const fetchPosts = async () => {
@@ -67,7 +69,7 @@ const Feed = () => {
         />
       </form>
 
-      <EntryCardList data={posts} handleTagClick={() => {}} />
+      <EntryCardList data={resultPosts} handleTagClick={() => {}} />
     </section>
   );
 };
