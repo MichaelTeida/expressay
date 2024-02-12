@@ -15,11 +15,29 @@ const EntryCardList = ({ data, handleTagClick }) => {
 
 const Feed = () => {
   const [searchText, setSearchText] = useState("");
+  const [searchTimeout, setSearchTimeout] = useState(null);
+  const [resultPosts, setResultPosts] = useState([]);
   const [posts, setPosts] = useState([]);
 
-  const handleSearch = (event) => {
+  const HandleSearch = (event) => {
     event.preventDefault();
     setSearchText(event.target.value);
+    HandleSearchTimeout();
+  };
+
+  const FilterPosts = () => {
+    const regex = new RegExp(searchText, "i");
+    return posts.filter((el) => {
+      regex.test(el.username), regex.test(el.tag), regex.test(el.entry);
+    });
+  };
+
+  const HandleSearchTimeout = () => {
+    clearTimeout(timeout);
+
+    const timeout = setTimeout(() => {
+      setResultPosts(FilterPosts);
+    }, 350);
   };
 
   const fetchPosts = async () => {
@@ -43,7 +61,7 @@ const Feed = () => {
           type="text"
           placeholder="Search for a entry or a tag"
           value={searchText}
-          onChange={handleSearch}
+          onChange={HandleSearch}
           required
           className="search_input peer"
         />
