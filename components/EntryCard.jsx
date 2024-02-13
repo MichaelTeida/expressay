@@ -17,10 +17,21 @@ const EntryCard = ({ post, handleEdit, handleDelete, handleTagClick }) => {
     setTimeout(() => setCopied(""), 2000);
   };
 
+  const handleProfileClick = () => {
+    if (session?.user.id === post.creator._id) {
+      return router.push("/profile");
+    }
+
+    router.push(`/profile/${post.creator._id}?name=${post.creator.username}`);
+  };
+
   return (
     <div className="entry_card">
       <div className="flex justify-between items-start gap-5">
-        <div className="flex-1 flex items-center justify-start gap-3 cursor-pointer">
+        <div
+          className="flex-1 flex items-center justify-start gap-3 cursor-pointer"
+          onClick={handleProfileClick}
+        >
           <Image
             src={post.creator.image}
             alt="user image"
