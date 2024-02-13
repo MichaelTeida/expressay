@@ -43,6 +43,12 @@ const Feed = () => {
     }, 1350);
   };
 
+  const handleTagClick = (tag) => {
+    setSearchText(tag);
+    const filteredPosts = FilterPosts(tag);
+    setResultPosts(filteredPosts);
+  };
+
   const fetchPosts = async () => {
     try {
       const response = await fetch("/api/entry");
@@ -70,9 +76,9 @@ const Feed = () => {
         />
       </form>
       {searchText ? (
-        <EntryCardList data={resultPosts} handleTagClick={() => {}} />
+        <EntryCardList data={resultPosts} handleTagClick={handleTagClick} />
       ) : (
-        <EntryCardList data={posts} handleTagClick={() => {}} />
+        <EntryCardList data={posts} handleTagClick={handleTagClick} />
       )}
     </section>
   );
