@@ -40,7 +40,7 @@ const Feed = () => {
     setTimeout(() => {
       const filteredPosts = FilterPosts(searchedText);
       setResultPosts(filteredPosts);
-    }, 350);
+    }, 1350);
   };
 
   const fetchPosts = async () => {
@@ -69,8 +69,11 @@ const Feed = () => {
           className="search_input peer"
         />
       </form>
-
-      <EntryCardList data={resultPosts} handleTagClick={() => {}} />
+      {searchText ? (
+        <EntryCardList data={resultPosts} handleTagClick={() => {}} />
+      ) : (
+        <EntryCardList data={posts} handleTagClick={() => {}} />
+      )}
     </section>
   );
 };
