@@ -7,7 +7,7 @@ const Profile = ({ name, email, desc, data, handleEdit, handleDelete }) => {
         <span className="green_gradient">{name} </span>profile
       </h1>
       <p className="desc text-left">{desc}</p>
-      <p className="text-left text-md mt-4 ">Your email: {email}</p>
+      <p className="text-left text-md mt-4 ">Email: {email}</p>
       <div className="mt-8 entry_layout">
         {data.map((post) => (
           <EntryCard
