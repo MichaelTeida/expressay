@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
 import Form from "@components/Form";
 
@@ -57,13 +58,15 @@ const EditEntry = () => {
   };
 
   return (
-    <Form
-      type="Edit"
-      post={post}
-      setPost={setPost}
-      submitting={submitting}
-      handleSubmit={editEntry}
-    />
+    <Suspense fallback={<div>Loading...</div>}>
+      <Form
+        type="Edit"
+        post={post}
+        setPost={setPost}
+        submitting={submitting}
+        handleSubmit={editEntry}
+      />
+    </Suspense>
   );
 };
 
