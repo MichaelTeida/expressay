@@ -2,7 +2,6 @@
 
 import EntryCard from "@components/EntryCard";
 import { useState, useEffect } from "react";
-import { useSession } from "next-auth/react";
 
 const EntryCardList = ({ data, handleTagClick }) => {
   return (
@@ -15,7 +14,6 @@ const EntryCardList = ({ data, handleTagClick }) => {
 };
 
 const Feed = () => {
-  const { data: session } = useSession();
   const [posts, setPosts] = useState([]);
 
   const [searchText, setSearchText] = useState("");
@@ -62,23 +60,26 @@ const Feed = () => {
   };
 
   useEffect(() => {
-    if (session?.user.id) {
-      fetchPosts().then(() => console.log("Posts fetched successfully"));
-    }
-  }, [session?.user.id]);
+    fetchPosts().then(() => console.log("Posts fetched successfully"));
+  }, []);
 
   return (
     <section className="feed">
-      <form className="realtive w-full flex-center">
-        <input
-          type="text"
-          placeholder="Search for a entry or a tag"
-          value={searchText}
-          onChange={HandleSearch}
-          required
-          className="search_input peer"
-        />
-      </form>
+      <div className="container flex-between gap-4">
+        <form className="realtive w-full flex-center">
+          <input
+            type="text"
+            placeholder="Search for a entry or a tag"
+            value={searchText}
+            onChange={HandleSearch}
+            required
+            className="search_input peer"
+          />
+        </form>
+        <button onClick={fetchPosts} className="outlined_btn">
+          Refresh
+        </button>
+      </div>
       <EntryCardList
         data={searchText ? resultPosts : posts}
         handleTagClick={handleTagClick}

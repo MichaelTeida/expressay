@@ -78,6 +78,14 @@
     @apply flex justify-center items-center flex-col max-w-screen-2xl relative sm:px-16 px-6 z-10 mx-auto;
 }
 
+.search_input {
+    @apply block w-full rounded-lg border border-gray-200 bg-white py-2.5 font-inter pl-5 pr-12 text-sm shadow-lg font-medium focus:border-black focus:outline-none focus:ring-0;
+}
+
+.outlined_btn {
+    @apply rounded-lg border border-gray-200 bg-white py-2.5 px-5 shadow-lg transition-all hover:bg-white font-medium hover:border-black focus:ring-0 hover:text-black text-center text-sm font-inter flex items-center justify-center;
+}
+
 .green_btn {
     @apply rounded-lg border border-green-500 bg-green-600 py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center text-sm font-inter flex items-center justify-center;
 }
@@ -108,10 +116,6 @@
 
 .desc {
     @apply mt-5 text-lg text-gray-600 sm:text-xl max-w-2xl;
-}
-
-.search_input {
-    @apply block w-full rounded-md border border-gray-200 bg-white py-2.5 font-inter pl-5 pr-12 text-sm shadow-lg font-medium focus:border-black focus:outline-none focus:ring-0;
 }
 
 .copy_btn {
