@@ -83,7 +83,7 @@
 }
 
 .outlined_btn {
-    @apply rounded-lg border border-gray-200 bg-white py-2.5 px-5 shadow-lg transition-all hover:bg-white font-medium hover:border-black focus:ring-0 hover:text-black text-center text-sm font-inter flex items-center justify-center;
+    @apply rounded-lg border border-gray-200 bg-white py-2.5 px-5 shadow-lg transition-all hover:bg-white font-medium hover:border-black text-center font-inter flex items-center justify-center;
 }
 
 .green_btn {

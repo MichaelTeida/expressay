@@ -54,6 +54,8 @@ const Feed = () => {
       const response = await fetch("/api/entry");
       const data = await response.json();
       setPosts(data);
+      console.log(data);
+      Feed();
     } catch (error) {
       console.error(error);
     }
@@ -76,7 +78,12 @@ const Feed = () => {
             className="search_input peer"
           />
         </form>
-        <button onClick={fetchPosts} className="outlined_btn">
+        <button
+          onClick={() => {
+            fetchPosts();
+          }}
+          className="outlined_btn"
+        >
           Refresh
         </button>
       </div>
