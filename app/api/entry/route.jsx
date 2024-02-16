@@ -6,7 +6,12 @@ export const GET = async (req) => {
     await connectToDB();
     const entries = await Entry.find({}).populate("creator");
 
-    return new Response(JSON.stringify(entries), { status: 200 });
+    return new Response(JSON.stringify(entries), {
+      status: 200,
+      headers: {
+        "Cache-Control": "no-store, max-age=0",
+      },
+    });
   } catch (error) {
     return new Response("Failed to load entry", { status: 500 });
   }
