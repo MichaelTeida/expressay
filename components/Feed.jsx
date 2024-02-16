@@ -51,7 +51,7 @@ const Feed = () => {
 
   const fetchPosts = async () => {
     try {
-      const response = await fetch("/api/entry", { cache: "no-store" });
+      const response = await fetch("/api/entry");
       const data = await response.json();
       setPosts(data);
     } catch (error) {
