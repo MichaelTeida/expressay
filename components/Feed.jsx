@@ -60,7 +60,7 @@ const Feed = () => {
   };
 
   useEffect(() => {
-    fetchPosts();
+    fetchPosts().then(() => console.log("Posts fetched successfully"));
   }, []);
 
   return (
