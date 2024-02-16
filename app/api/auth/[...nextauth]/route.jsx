@@ -33,7 +33,7 @@ const handler = NextAuth({
           });
         }
 
-        return true;
+        return false;
       } catch (error) {
         console.error(error);
         return false;
