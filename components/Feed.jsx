@@ -51,7 +51,7 @@ const Feed = () => {
 
   const fetchPosts = async () => {
     try {
-      const response = await fetch("/api/entry", { next: { revalidate: 0 } });
+      const response = await fetch("/api/entry", { method: "GET" });
       const data = await response.json();
       setPosts(data);
     } catch (error) {
@@ -75,11 +75,10 @@ const Feed = () => {
           className="search_input peer"
         />
       </form>
-      {searchText ? (
-        <EntryCardList data={resultPosts} handleTagClick={handleTagClick} />
-      ) : (
-        <EntryCardList data={posts} handleTagClick={handleTagClick} />
-      )}
+      <EntryCardList
+        data={searchText ? resultPosts : posts}
+        handleTagClick={handleTagClick}
+      />
     </section>
   );
 };
