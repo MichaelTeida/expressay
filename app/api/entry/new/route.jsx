@@ -11,13 +11,7 @@ export const POST = async (req) => {
 
     await newEntry.save();
 
-    return new Response(JSON.stringify(newEntry), {
-      status: 201,
-      headers: {
-        "Cache-Control": "no-store",
-        "Content-Type": "application/json",
-      },
-    });
+    return new Response(JSON.stringify(newEntry), { status: 201 });
   } catch (error) {
     return new Response("Failed to create a new entry", { status: 500 });
   }
