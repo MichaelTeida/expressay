@@ -2,10 +2,11 @@ import { connectToDB } from "@utils/database";
 import Entry from "@models/entry";
 
 export const POST = async (req) => {
-  const { userId, entry, tag } = await req.json();
-
   try {
     await connectToDB;
+
+    const { userId, entry, tag } = await req.json();
+
     const newEntry = new Entry({ creator: userId, entry, tag });
 
     await newEntry.save();
