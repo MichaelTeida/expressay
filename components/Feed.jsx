@@ -51,7 +51,7 @@ const Feed = () => {
 
   const fetchPosts = async () => {
     try {
-      const response = await fetch("/api/entry");
+      const response = await fetch("/api/entry", { next: { revalidate: 5 } });
       const data = await response.json();
       setPosts(data);
     } catch (error) {
