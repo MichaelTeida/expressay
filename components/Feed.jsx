@@ -2,6 +2,7 @@
 
 import EntryCard from "@components/EntryCard";
 import { useState, useEffect } from "react";
+import { useSession } from "next-auth/react";
 
 const EntryCardList = ({ data, handleTagClick }) => {
   return (
@@ -14,6 +15,7 @@ const EntryCardList = ({ data, handleTagClick }) => {
 };
 
 const Feed = () => {
+  const { data: session } = useSession();
   const [posts, setPosts] = useState([]);
 
   const [searchText, setSearchText] = useState("");
@@ -60,8 +62,10 @@ const Feed = () => {
   };
 
   useEffect(() => {
-    fetchPosts().then(() => console.log("Posts fetched successfully"));
-  }, []);
+    if (session?.user.id) {
+      fetchPosts().then(() => console.log("Posts fetched successfully"));
+    }
+  }, [session?.user.id]);
 
   return (
     <section className="feed">
