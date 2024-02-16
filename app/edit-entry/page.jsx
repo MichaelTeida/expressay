@@ -1,15 +1,13 @@
 "use client";
 
-import { useState, useEffect, Suspense } from "react";
+import { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
 import Form from "@components/Form";
 
 const EditEntry = () => {
   const router = useRouter();
-  const searchParams = (
-    <Suspense fallback={<div>Loading...</div>}>{useSearchParams()}</Suspense>
-  );
+  const searchParams = useSearchParams();
   const entryId = searchParams.get("id");
 
   const [submitting, setSubmitting] = useState(false);
@@ -33,7 +31,7 @@ const EditEntry = () => {
     }
   }, [entryId]);
 
-  const editEntry = async (e) => {
+  const HandleEditEntry = async (e) => {
     e.preventDefault();
     setSubmitting(true);
 
@@ -64,7 +62,7 @@ const EditEntry = () => {
       post={post}
       setPost={setPost}
       submitting={submitting}
-      handleSubmit={editEntry}
+      handleSubmit={HandleEditEntry}
     />
   );
 };
