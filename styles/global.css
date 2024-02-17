@@ -4,7 +4,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 .main {
     min-height: 100vh;
     pointer-events: none;
@@ -36,42 +35,6 @@
     z-index: 1;
     width: 100%;
     height: 100%;
-}
-
-.gradient {
-    position: absolute;
-    height: fit-content;
-    z-index: 3;
-    max-width: 640px;
-    content: "";
-    width: 100%;
-    filter: blur(102px) saturate(153%);
-    top: 76px;
-    opacity: 0.13;
-    background-image: radial-gradient(
-            at 25% 39%,
-            hsla(217, 96%, 63%, 1) 0px,
-            transparent 0%
-    ),
-    radial-gradient(at 95% 23%, hsla(127, 96%, 74%, 1) 0px, transparent 50%),
-    radial-gradient(at 50% 97%, hsla(352, 96%, 63%, 1) 0px, transparent 50%),
-    radial-gradient(at 12% 31%, hsla(258, 94%, 69%, 1) 0px, transparent 50%),
-    radial-gradient(at 95% 94%, hsla(40, 58%, 76%, 1) 0px, transparent 50%),
-    radial-gradient(at 31% 52%, hsla(224, 65%, 75%, 1) 0px, transparent 50%),
-    radial-gradient(at 77% 55%, hsla(345, 66%, 81%, 1) 0px, transparent 50%);
-}
-
-@media screen and (max-width: 640px) {
-    .main {
-        padding: 0;
-    {
-    {
-    {
-
-    }
-    }
-    }
-    }
 }
 
 .app {
