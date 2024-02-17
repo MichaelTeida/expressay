@@ -28,9 +28,9 @@ To get started with Expressay, follow these steps:
 1. Clone this repository.
 2. Navigate to the project directory.
 3. Install dependencies using `npm install` or `yarn install`.
-4. Create a `.env` file in the project directory.
-5. Configure your MongoDB connection.
-6. Configure your Google Cloud connection (OAuth).
+4. Configure your MongoDB connection.
+5. Configure your Google Cloud connection (OAuth).
+6. Create a `.env` file in the project directory.
 7. Add the following parameters to the `.env` file:
     ```
     GOOGLE_ID=
