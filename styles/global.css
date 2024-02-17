@@ -143,11 +143,15 @@
 }
 
 .entry_layout {
-    @apply space-y-6 py-8 sm:columns-2 sm:gap-6 xl:columns-3;
+    @apply w-full gap-3 sm:columns-2 xl:columns-4 space-y-3;
+}
+
+.entry_card {
+    @apply break-inside-avoid flex-1 rounded-lg border border-gray-300 bg-white/20 bg-clip-padding p-5 pb-3 backdrop-blur-lg backdrop-filter w-full h-fit;
 }
 
 .feed {
-    @apply mt-16 mx-auto w-full max-w-xl flex justify-center items-center flex-col gap-2;
+    @apply mt-16 mx-auto w-full max-w-full flex justify-center items-center flex-col gap-2;
 }
 
 .form_textarea {
@@ -168,8 +172,4 @@
 
 .dropdown_link {
     @apply text-sm font-inter text-gray-700 hover:text-gray-500 font-medium w-full text-center;
-}
-
-.entry_card {
-    @apply break-inside-avoid flex-1 rounded-lg border border-gray-300 bg-white/20 bg-clip-padding p-5 pb-3 backdrop-blur-lg backdrop-filter md:w-[348px] w-full h-fit;
 }
