@@ -7,9 +7,10 @@ Expressay is a platform designed for swift expression and sharing. It facilitate
 - React
 - Next.js 14.1.0
 - MongoDB
-- bcrypt
+- Tailwind
 - Mongoose
 - next-auth
+- bcrypt
 
 ## Features
 
